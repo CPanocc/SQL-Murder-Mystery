@@ -3,9 +3,11 @@ A crime has taken place and the detective needs your help. The detective gave yo
 
 Searching for murder on Jan.15, 2018
 
-`SELECT *
+```SQL
+SELECT *
 FROM crime_scene_report
-WHERE type='murder' AND date='20180115' AND city='SQL City'`
+WHERE type='murder' AND date='20180115' AND city='SQL City'
+```
 
 Result:
 | ssn     	| Person  | Id	    | name	  | Gym     | Id	    | membership_status	| check_in_date	plate_number |
