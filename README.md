@@ -1,12 +1,12 @@
 # SQL-Murder-Mystery
 A crime has taken place and the detective needs your help. The detective gave you the crime scene report, but you somehow lost it. You vaguely remember that the crime was a ​murder​ that occurred sometime on ​Jan.15, 2018​ and that it took place in ​SQL City​. Start by retrieving the corresponding crime scene report from the police department’s database.
 
-1. Searching for murder on Jan.15, 2018
+1. Searching for murder on Jan.15, 2018:
 
 ```SQL
 SELECT *
 FROM crime_scene_report
-WHERE type='murder' AND date='20180115' AND city='SQL City'
+WHERE type = 'murder' AND date = '20180115' AND city = 'SQL City'
 ```
 Result:
 | ssn     	| Person  | Id	    | name	  | Gym     | Id	    | membership_status	| check_in_date	plate_number |
@@ -14,12 +14,13 @@ Result:
 | 871539279	| 67318 	| Jeremy  | Bowers	| 48Z55  	| gold	  | 20180109         	| 0H42W2                     | 
 
 
-2. Seeking the witnesses
+2. Seeking the witnesses:
 
 The first witness:
 ```SQL
-SELECT * FROM person 
-WHERE address_street_name='Northwestern Dr' 
+SELECT *
+FROM person 
+WHERE address_street_name = 'Northwestern Dr' 
 ORDER BY address_number desc
 LIMIT 1
 ```
@@ -56,8 +57,7 @@ Result:
 4. Checking Morty Schapiro interview:
 ```SQL
 SELECT p.name, p.license_id,
-d.id, 
-d.age, d.height, d.eye_color, d.hair_color, d.gender, 
+d.id, d.age, d.height, d.eye_color, d.hair_color, d.gender, 
 d.plate_number, d.car_make, d.car_model
 FROM drivers_license d 
 JOIN person p ON p.license_id=d.id
@@ -87,7 +87,7 @@ Result:
 SELECT m.id, m.person_id, m.membership_status,
 c.check_in_date, c.check_in_time, c.check_out_time
 FROM get_fit_now_check_in c 
-JOIN get_fit_now_member m on m.id=c.membership_id
+JOIN get_fit_now_member m on m.id = c.membership_id
 WHERE c.check_in_date = 20180109 AND m.membership_status = 'gold' AND m.person_id = 67318
 ```
 Result:
@@ -96,10 +96,10 @@ Result:
 | 48Z55	|	67318	    |	gold            	|	20180109	    |	1530	        |	1700           |	
 
 
-6. Check your solution
+6. Check your solution:
 ```SQL
-INSERT INTO solution VALUES (1, 'Jeremy Bowers');
-SELECT value FROM solution;
+INSERT INTO solution VALUES (1, 'Jeremy Bowers')
+SELECT value FROM solution
 ```
 Result:
 | value |
@@ -117,23 +117,35 @@ Result:
 | :-------: | :--------: | 
 | 67318     |	I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017. |
 
-8. Checking woman
+8. Checking woman:
+
+First option:
+```SQL
+SELECT *
+FROM person p
+JOIN drivers_license d
+ON p.license_id = d.id
+JOIN facebook_event_checkin f
+ON f.person_id = p.id
+WHERE gender = 'female' AND d.car_make = 'Tesla' AND d.car_model = 'Model S' AND f.event_name = 'SQL Symphony Concert'
+```
+
+Second option:
 ```SQL
 SELECT *
 FROM person
 WHERE id =
 (SELECT person_id
 FROM facebook_event_checkin
-WHERE event_name = 'SQL Symphony Concert' 
-AND date like '201712%'
+WHERE event_name = 'SQL Symphony Concert' AND date like '201712%'
 GROUP BY person_id
 HAVING COUNT(DISTINCT event_name) = 3)
 OR
 license_id =
 (SELECT id
 FROM drivers_license
-WHERE gender = 'female' AND hair_color = 'red' AND car_make = 'Tesla' 
-AND car_model = 'Model S' AND height between 65 and 67)
+WHERE gender = 'female' AND hair_color = 'red' AND height between 65 and 67
+AND car_make = 'Tesla' AND car_model = 'Model S')
 OR
 id =
 (SELECT ssn
@@ -147,8 +159,8 @@ Result:
 
 9. Check your solution:
 ```SQL
-INSERT INTO solution VALUES (1, 'Miranda Priestly');
-SELECT value FROM solution;
+INSERT INTO solution VALUES (1, 'Miranda Priestly')
+SELECT value FROM solution
 ```
 Result:
 | value |
