@@ -9,10 +9,9 @@ FROM crime_scene_report
 WHERE type = 'murder' AND date = '20180115' AND city = 'SQL City'
 ```
 Result:
-| ssn     	| Person  | Id	    | name	  | Gym     | Id	    | membership_status	| check_in_date	plate_number |
-| :-------: | :-----: | :-----: | :-----: | :-----: | :-----: | :---------------: | :------------------------: | 
-| 871539279	| 67318 	| Jeremy  | Bowers	| 48Z55  	| gold	  | 20180109         	| 0H42W2                     | 
-
+| date     |	type   |	description |	city    |
+| :------: | :-----: | :----------: | :-----: | 
+| 20180115 |	murder |	Security footage shows that there were 2 witnesses. The first witness lives at the last house on "Northwestern Dr". The second witness, named Annabel, lives somewhere on "Franklin Ave". |	SQL City |
 
 2. Seeking the witnesses:
 
