@@ -75,7 +75,7 @@ Result:
 ```SQL
 SELECT *
 FROM get_fit_now_member
-WHERE id like '48Z%' AND membership_status = 'gold'
+WHERE id LIKE '48Z%' AND membership_status = 'gold'
 ```
 Result:
 | id    |	person_id	|	name	        |	membership_start_date	|	membership_status |	
@@ -101,7 +101,8 @@ Result:
 6. Check your solution:
 ```SQL
 INSERT INTO solution VALUES (1, 'Jeremy Bowers')
-SELECT value FROM solution
+SELECT value
+FROM solution
 ```
 Result:
 | value |
@@ -129,7 +130,8 @@ JOIN drivers_license d
   ON p.license_id = d.id
 JOIN facebook_event_checkin f
   ON f.person_id = p.id
-WHERE gender = 'female' AND d.car_make = 'Tesla' AND d.car_model = 'Model S' AND f.event_name = 'SQL Symphony Concert'
+WHERE gender = 'female' AND d.car_make = 'Tesla' AND d.car_model = 'Model S'
+AND f.event_name = 'SQL Symphony Concert'
 ```
 
 Second option:
