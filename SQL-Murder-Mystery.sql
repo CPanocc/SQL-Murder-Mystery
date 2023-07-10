@@ -25,8 +25,8 @@ WHERE p.id = 14887 OR p.id = 16371
 
 --Checking Morty Schapiro interview:
 SELECT p.name, p.license_id,
-d.id, d.age, d.height, d.eye_color, d.hair_color, d.gender, 
-d.plate_number, d.car_make, d.car_model
+  d.id, d.age, d.height, d.eye_color, d.hair_color, d.gender, 
+  d.plate_number, d.car_make, d.car_model
 FROM drivers_license d 
 JOIN person p
   ON p.license_id=d.id
@@ -38,7 +38,7 @@ WHERE id LIKE '48Z%' AND membership_status = 'gold'
 
 --Checking Annabel Miller interview:
 SELECT m.id, m.person_id, m.membership_status,
-c.check_in_date, c.check_in_time, c.check_out_time
+  c.check_in_date, c.check_in_time, c.check_out_time
 FROM get_fit_now_check_in c 
 JOIN get_fit_now_member m
   ON m.id = c.membership_id
