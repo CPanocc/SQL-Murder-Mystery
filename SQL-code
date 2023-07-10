@@ -4,7 +4,7 @@ FROM crime_scene_report
 WHERE type = 'murder' AND date = '20180115' AND city = 'SQL City'
 
 2. Seeking the witnesses
-
+The first witness:
 SELECT * 
 FROM person 
 WHERE address_street_name = 'Northwestern Dr' 
