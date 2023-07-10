@@ -32,7 +32,7 @@ The second witness:
 ```SQL
 SELECT *
 FROM person
-WHERE address_street_name = "Franklin Ave" AND name like "%Annabel%"
+WHERE address_street_name = "Franklin Ave" AND name LIKE "%Annabel%"
 ```
 Result:
 | id  	| name          	| license_id	| address_number	| address_street_name	| ssn       | 
@@ -73,7 +73,7 @@ Result:
 ```SQL
 SELECT *
 FROM get_fit_now_member
-WHERE id like '48Z%' AND membership_status='gold'
+WHERE id like '48Z%' AND membership_status = 'gold'
 ```
 Result:
 | id    |	person_id	|	name	        |	membership_start_date	|	membership_status |	
