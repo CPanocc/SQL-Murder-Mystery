@@ -144,14 +144,14 @@ FROM person
 WHERE id =
   (SELECT person_id
   FROM facebook_event_checkin
-  WHERE event_name = 'SQL Symphony Concert' AND date like '201712%'
+  WHERE event_name = 'SQL Symphony Concert' AND date LIKE '201712%'
   GROUP BY person_id
   HAVING COUNT(DISTINCT event_name) = 3)
 OR
 license_id =
   (SELECT id
   FROM drivers_license
-  WHERE gender = 'female' AND hair_color = 'red' AND height between 65 and 67
+  WHERE gender = 'female' AND hair_color = 'red' AND height BETWEEN 65 AND 67
   AND car_make = 'Tesla' AND car_model = 'Model S')
 OR
 id =
