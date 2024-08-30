@@ -72,9 +72,9 @@ AND check_in_date like '%0109'
 AND plate_number like '%H42W%'
 ```
 Result:
-| name          |	person_id	|	person_id	  |	membership_status | check_in_date     | plate_number      |
-| :-----------: | :-------: | :---------: | :----------------:| :---------------: | :---------------: |  
-| Jeremy Bowers	|	67318    	|	48Z55	      |	gold              |	20180109          |	0H42W2            |
+| name          | membership_id	|	membership_status | check_in_date     | plate_number      |
+| :-----------: | :---------:   | :----------------:| :---------------: | :---------------: |  
+| Jeremy Bowers	|	48Z55	        |	gold              |	20180109          |	0H42W2            |
 
 
 6. Check solution:
