@@ -113,9 +113,9 @@ AND hair_color = 'red'
 ```
 
 Result:
-| name	            | car_make	  | car_model	 | height	| red       | dec_2017_times_at_concert |
-| :---------------: | :---------: | :--------: | :----: | :-------: | :-------:                 |
-| Miranda Priestly	| Tesla	      | Model S    | 66	    | 987756388 | 3                         |
+| name	            | car_make	  | car_model	 | height	| hair_color | dec_2017_times_at_concert |
+| :---------------: | :---------: | :--------: | :----: | :-------:  | :-------:                 |
+| Miranda Priestly	| Tesla	      | Model S    | 66	    | red        | 3                         |
 
 9. Check solution:
 ```SQL
